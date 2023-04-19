@@ -1,0 +1,366 @@
+/* general styling */
+
+:root {
+    --main-purple: #8800C7;
+    --main-purple2: #A44CD3;
+    --accent-grey: #EEEEEE; 
+    --accent-pink: #E090DF; 
+
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: monospace;
+    line-height: 1.5;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+} 
+
+/* general main styling */
+
+main {
+    width: 95%;
+    margin: 0 auto;
+}
+
+p, li, figcaption {
+    max-width: 80ch;
+    font-size: 1.3em;
+}
+
+li li {
+    font-size: inherit;
+}
+
+/* main nav bar */
+
+nav ul {
+    display: grid;
+    grid-row: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--main-purple);
+}
+
+li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 2%;
+}
+
+nav li {
+    display: flex;
+    align-items: center;
+}
+
+nav li a:hover, nav li.currentPage {
+    background-color: var(--main-purple2);
+}
+
+/* page heading */
+
+header h1 {
+    text-align: center;
+    font-size: 3em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 0.12em;
+}
+
+/* about me */
+
+#about-me {
+    margin: 10px auto;
+}
+
+/* profile pic styling */
+
+#profile-pic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 60vw;
+    margin: auto;
+}
+
+#profile-pic img {
+    width: 100%;
+    border: 2em solid var(--accent-pink);
+    box-sizing: border-box;
+}
+
+#profile-pic figcaption {
+    padding-top: 20px;
+}
+
+/* CV styling */
+
+.disclaimer {
+    font-style: italic;
+    text-align: center;
+    max-width: none;
+}
+
+#cv-main {
+    width: 60%;
+}
+
+section h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+article {
+    margin: 10px 0;
+}
+
+.cv-article {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    border-radius: 8px;
+    grid-template-areas: 
+                        "heading"
+                        "body";
+}
+
+.cv-article ul {
+    padding-inline-end: 10px;
+}
+
+.cv-article-headings {
+    background-color: var(--accent-pink);
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 4px solid var(--main-purple2);
+    grid-area: heading;
+}
+
+.cv-article div:not(.cv-article-headings) {
+    background-color: var(--accent-grey);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    grid-area: body;
+}
+
+.cv-article-headings p {
+    font-style: italic;
+}
+
+#skills-list {
+    background-color: var(--accent-grey);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* contact page styling */
+
+#contact-instructions {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#contact-page {
+    border: 4px solid var(--main-purple2);
+    border-radius: 8px;
+    background-color: var(--accent-pink);
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+#contact-form label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+#subjectLabel, #messageLabel {
+    padding-inline-start: 5%;
+}
+
+#contact-form input, #contact-form textarea {
+    flex-grow: 2;
+    max-width: 300px;
+    margin: 5%;
+    padding: 2px;
+    border-width: 1px;
+    min-width: 0%;
+    height: 40px;
+}
+
+#contact-form textarea {
+    resize: vertical;
+}
+
+#contact-form button {
+    margin: 20px;
+
+}
+
+/* button styling */
+
+button {
+    border: 2px solid var(--accent-pink);
+    background-color: var(--accent-grey);
+    height: 75px;
+    max-width: 125px;
+    width: 100%;
+    border-radius: 0.4em;
+    font-size: 1em;
+    align-self: center;
+}
+
+button:hover {
+    background-color: var(--main-purple2);
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+footer {
+    margin-top: 3em;
+    padding: 20px;
+    background-color: var(--accent-pink);
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 600px) { 
+    /* change nav bar from vertical to horizontal */  
+    nav ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 1fr;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: var(--main-purple);
+    }
+
+    li a {
+        padding: 7% 5%;
+    }
+
+    /* change to horizontal cv articles */
+    .cv-article {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        grid-template-rows: repeat(1, 1fr);
+        border-radius: 8px;
+        grid-template-areas: "heading body";
+    }
+
+    .cv-article div:not(.cv-article-headings) {
+        border-radius: 0 8px 8px 0;
+    }
+
+    .cv-article-headings {
+        border-radius: 8px 0 0 8px;
+        border-bottom: none;
+        border-right: 4px solid var(--main-purple2);
+    }
+
+    /* make contact form smaller */
+
+    #contact-page {
+        width: 50%;
+    }
+
+    #contact-form {
+        width: 60%;
+    }
+
+    #contact-form input, #contact-form textarea {
+        height: revert;
+    }
+
+    button {
+        max-width: 100px;
+        height: 50px;
+    }
+
+}
+
+@media (min-width: 800px) {
+    /* make profile pic smaller */
+    #profile-pic {
+        width: 40vw;
+    }
+}
+
+@media (min-width: 1000px) {
+    /* change to 2 x 2 grid for portfolio */
+    .portfolio-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: 
+                "calc basicExpenses"
+                "expenses demo";
+        grid-column-gap: 2%;
+        grid-row-gap: 2%;
+        padding: 1%;
+        margin: 1%;
+    }
+
+    /* add spacing outside portfolio grid */
+    main {
+        width: 90%;
+    }
+}
+
+@media print {
+
+    #contact-form {
+        width: 60%;
+    }
+
+    .portfolio-wrapper div {
+        break-inside: avoid;
+        margin: auto;
+        width: 70%;
+    }
+
+    .cv-article {
+        break-inside: avoid;
+    }
+
+    #profile-pic {
+        width: 40vw;
+    }
+
+    nav {
+        display: none;
+    }
+
+    a[href^="http"]::after {
+		content: " (" attr(href) ")";
+	}
+}
